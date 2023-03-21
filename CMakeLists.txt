@@ -1,5 +1,12 @@
-cmake_minimum_required(VERSION 3.10)
-project(glad)
+cmake_minimum_required(VERSION 3.12)
+project(glad LANGUAGES C)
 
-add_library(glad include/glad/glad.h src/glad.c)
+set(GLADFILES 
+		src/glad.c 
+		include/glad/glad.h
+)
+
+add_library(glad ${GLADFILES})
+
 target_include_directories(glad PUBLIC include/)
+target_link_libraries(glad PUBLIC ${CMAKE_DL_LIBS})
